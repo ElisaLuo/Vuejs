@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
 const mongoose = require('mongoose')
-const User = require('../models/User')
+const register = require('../routes/register')
 
 // sets up app
 const app = express()
@@ -21,27 +21,7 @@ db.once('open', function () {
 })
 
 // register function
-app.post('/register', (req, res) => {
-  User.findOne({username: req.body.username}, function (err, user) {
-    if (err) {
-      console.log(err)
-    }
-    if (!user) { // creates new user
-      new User({
-        username: req.body.username,
-        password: req.body.password
-      }).save(function (err, user) {
-        if (err) {
-          console.log(err)
-        }
-        res.send('successful')
-      })
-    }
-    if (user) {
-      res.send('successful')
-    }
-  })
-})
+app.use('/register', register)
 
 // app listens on port 8081
 app.listen(8081, function () {
