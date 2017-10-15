@@ -15,11 +15,11 @@ router.post('/', (req, res) => {
         if (err) {
           console.log(err)
         }
-        res.send('successful')
+        res.send(user)
       })
     }
     if (user) {
-      res.send('This user already exists')
+      res.send({error: 'This user already exists'})
     }
   })
 })
