@@ -1,0 +1,23 @@
+{
+  "name": "vue-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd server && npm start",
+    "prepare": "cd client && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElisaLuo/Vuejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElisaLuo/Vuejs/issues"
+  },
+  "homepage": "https://github.com/ElisaLuo/Vuejs#readme"
+}
