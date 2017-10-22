@@ -12,9 +12,9 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  Songs.findOne({title: req.body.title}, function (err, songs) {
+  Songs.findOne({title: ''}, function (err, songs) {
     if (err) {
-      res.send(err)
+      console.log(err)
     }
     if (!songs) { // creates new user
       new Songs({
@@ -28,12 +28,13 @@ router.post('/', (req, res) => {
         tab: req.body.tab
       }).save(function (err, songs) {
         if (err) {
-          res.send(err)
+          console.log(err)
         }
         res.send(songs)
       })
-    } else {
-      res.send({error: 'Error in creating song'})
+    }
+    if (songs) {
+      res.send({error: 'This song already exists'})
     }
   })
 })

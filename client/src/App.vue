@@ -33,4 +33,7 @@ export default {
 .container{
   margin: 50px auto auto auto;
 }
+.danger-alert{
+  color: red;
+}
 </style>

@@ -14,8 +14,11 @@
     <v-flex xs8>
       <panel title="Create Song" class="ml-3">
         <v-text-field label="Lyrics" multi-line v-model="song.lyrics" required :rules="[required]"></v-text-field>
-        <v-text-field label="Tab" multi-line v-model="song.tab" required :rules="[required]"></v-text-field>
+        <v-text-field label="Tablature" multi-line v-model="song.tab" required :rules="[required]"></v-text-field>
       </panel>
+      <div class="danger-alert" v-if="error">
+        {{error}}
+      </div>
       <v-btn dark class="cyan" @click="create">Create Song</v-btn>
     </v-flex>
   </v-layout>
@@ -30,6 +33,7 @@ export default {
   },
   data () {
     return {
+      error: null,
       song: {
         title: null,
         artist: null,
@@ -45,14 +49,20 @@ export default {
   },
   methods: {
     async create () {
+      this.error = null
+      const areAllFieldsFilledIn = Object.keys(this.song).every(key => !!this.song[key])
+      if (!areAllFieldsFilledIn) {
+        this.error = 'Please fill in all required fields'
+        return
+      }
       try {
         await SongsService.addSong(this.song)
+        this.$router.push({
+          name: 'songs'
+        })
       } catch (err) {
         console.log(err)
       }
-      this.$router.push({
-        name: 'songs'
-      })
     }
   }
 }
