@@ -14,7 +14,7 @@
     <v-flex xs8>
       <panel title="Create Song" class="ml-3">
         <v-text-field label="Lyrics" multi-line v-model="song.lyrics" required :rules="[required]"></v-text-field>
-        <v-text-field label="Tablature" multi-line v-model="song.tab" required :rules="[required]"></v-text-field>
+        <v-text-field label="Sound Source (.ogg file)" v-model="song.soundSource" required :rules="[required]"></v-text-field>
       </panel>
       <div class="danger-alert" v-if="error">
         {{error}}
@@ -42,7 +42,7 @@ export default {
         albumImage: null,
         youtubeId: null,
         lyrics: null,
-        tab: null
+        soundSource: null
       },
       required: (value) => !!value || 'Required'
     }

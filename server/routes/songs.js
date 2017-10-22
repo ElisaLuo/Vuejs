@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
         albumImage: req.body.albumImage,
         youtubeId: req.body.youtubeId,
         lyrics: req.body.lyrics,
-        tab: req.body.tab
+        soundSource: req.body.soundSource
       }).save(function (err, songs) {
         if (err) {
           console.log(err)
@@ -36,6 +36,15 @@ router.post('/', (req, res) => {
     if (songs) {
       res.send({error: 'This song already exists'})
     }
+  })
+})
+
+router.get('/:songId', (req, res) => {
+  Songs.findOne({_id: req.params.songId}, function (err, song) {
+    if (err) {
+      console.log(err)
+    }
+    res.send(song)
   })
 })
 

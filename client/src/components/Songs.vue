@@ -11,6 +11,10 @@
               <div class="song-title">{{song.title}}</div>
               <div class="song-artist">{{song.artist}}</div>
               <div class="song-genre">{{song.genre}}</div>
+              <audio controls>
+                <source :src="song.soundSource" type="application/ogg">
+              Your browser does not support the audio element.
+              </audio>
               <v-btn dark class="cyan" @click="navigateTo({name: 'song', params: {songId: song._id}})">View</v-btn>
             </v-flex>
             <v-flex xs6>
@@ -59,10 +63,10 @@ export default {
   font-size: 24px;
 }
 .song-genre {
-  font-size: 18px;
+  font-size: 24px;
 }
 .album-image {
-  width: 70%;
+  width: 55%;
   margin: 0 auto;
 }
 </style>

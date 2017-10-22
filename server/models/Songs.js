@@ -9,7 +9,7 @@ const songsSchema = new Schema({ // creates user schema
   albumImage: {type: String},
   youtubeId: {type: String},
   lyrics: {type: String},
-  tab: {type: String}
+  soundSource: {type: String}
 })
 
 // Sets up user schema
